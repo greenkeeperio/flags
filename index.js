@@ -48,3 +48,4 @@ flags.token = rc.get()[nerfDart(flags.api) + 'token'] || flags.token
 flags.postpublish = flags.hasOwnProperty('postpublish')
   ? flags.postpublish
   : true
+flags._rc = rc
