@@ -1,0 +1,34 @@
+{
+  "name": "@greenkeeper/flags",
+  "description": "option parsing for Greenkeeper CLI tools",
+  "author": "Stephan Bönnemann <stephan@boennemann.me> (http://boennemann.me)",
+  "bugs": {
+    "url": "https://github.com/greenkeeperio/flags/issues"
+  },
+  "dependencies": {
+    "@greenkeeper/rc": "^1.0.0",
+    "lodash": "^4.11.1",
+    "nerf-dart": "^1.0.0",
+    "nopt": "^3.0.6"
+  },
+  "devDependencies": {
+    "standard": "^6.0.8",
+    "greenkeeper-postpublish": "^1.0.0",
+    "semantic-release": "^4.3.5"
+  },
+  "homepage": "https://greenkeeper.io",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greenkeeperio/flags.git"
+  },
+  "scripts": {
+    "test": "standard",
+    "postpublish": "greenkeeper-postpublish",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
