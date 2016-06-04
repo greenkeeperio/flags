@@ -14,6 +14,7 @@ var types = {
   private: Boolean,
   slug: String,
   version: Boolean,
+  manual: Boolean,
   loglevel: [
     'error',
     'http',
