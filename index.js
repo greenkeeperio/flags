@@ -14,7 +14,7 @@ var types = {
   private: Boolean,
   slug: String,
   version: Boolean,
-  manual: Boolean,
+  admin: Boolean,
   loglevel: [
     'error',
     'http',
@@ -46,6 +46,10 @@ var flags = module.exports = _.assign({}, rcFlags, cliFlags)
 
 flags.api = url.parse(flags.api || 'https://api.greenkeeper.io/').format()
 flags.token = rc.get()[nerfDart(flags.api) + 'token'] || flags.token
+var admin = rc.get()[nerfDart(flags.api) + 'admin']
+flags.admin = admin === false || admin === true
+  ? admin : flags.admin
+
 flags.postpublish = flags.hasOwnProperty('postpublish')
   ? flags.postpublish
   : true
