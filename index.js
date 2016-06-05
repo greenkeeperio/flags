@@ -6,6 +6,7 @@ var nopt = require('nopt')
 
 var rc = require('@greenkeeper/rc')
 
+// Available flags and their type definitions
 var types = {
   api: String,
   help: Boolean,
@@ -26,8 +27,18 @@ var types = {
   ]
 }
 
+// Flag objects from different sources
+// 1. defaults flags
+// 2. rcfile flags
+// 3. nerfDarted rcfile flags (i.e. scoped by api endpoint)
+// 4. cli flags
+
+var defaults = {
+  api: 'https://api.greenkeeper.io/',
+  postpublish: true
+}
+
 var rcFlags = rc.get()
-nopt.clean(rcFlags, types)
 
 var cliFlags = nopt(types, {
   h: '--help',
@@ -42,15 +53,20 @@ var cliFlags = nopt(types, {
   quiet: ['--loglevel', 'warn']
 })
 
-var flags = module.exports = _.assign({}, rcFlags, cliFlags)
+var api = url.parse(cliFlags.api || rcFlags.api || defaults.api).format()
+var prefix = nerfDart(api)
 
-flags.api = url.parse(flags.api || 'https://api.greenkeeper.io/').format()
-flags.token = rc.get()[nerfDart(flags.api) + 'token'] || flags.token
-var admin = rc.get()[nerfDart(flags.api) + 'admin']
-flags.admin = admin === false || admin === true
-  ? admin : flags.admin
+var nerfDartFlags = _(rcFlags)
+.pickBy(function (flag, flagName) {
+  return flagName.slice(0, prefix.length) === prefix
+})
+.mapKeys(function (flag, flagName) {
+  return flagName.replace(prefix, '')
+})
+.value()
 
-flags.postpublish = flags.hasOwnProperty('postpublish')
-  ? flags.postpublish
-  : true
+var flags = module.exports = _.assign({}, defaults, rcFlags, nerfDartFlags, cliFlags)
+nopt.clean(flags, types)
+
+flags.api = api
 flags._rc = rc
