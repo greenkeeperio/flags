@@ -1,5 +1,7 @@
 # @greenkeeper/flags
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/greenkeeperio/flags.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/greenkeeperio/flags.svg?branch=master)](https://travis-ci.org/greenkeeperio/flags)
 [![Dependency Status](https://david-dm.org/greenkeeperio/flags/master.svg)](https://david-dm.org/greenkeeperio/flags/master)
 [![devDependency Status](https://david-dm.org/greenkeeperio/flags/master/dev-status.svg)](https://david-dm.org/greenkeeperio/flags/master#info=devDependencies)
