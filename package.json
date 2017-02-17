@@ -9,12 +9,12 @@
     "@greenkeeper/rc": "^2.0.0",
     "lodash": "^4.11.1",
     "nerf-dart": "^1.0.0",
-    "nopt": "^3.0.6"
+    "nopt": "^4.0.1"
   },
   "devDependencies": {
     "standard": "^8.1.0",
     "greenkeeper-postpublish": "^1.0.0",
-    "semantic-release": "^4.3.5"
+    "semantic-release": "^6.3.2"
   },
   "homepage": "https://greenkeeper.io",
   "license": "Apache-2.0",
